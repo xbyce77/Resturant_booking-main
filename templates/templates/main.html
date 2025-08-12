@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html>    
+<head>
+    <title>Restaurant Booking</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap + FontAwesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom Neon Styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+<!-- Message Notifications -->
+{% if messages %}
+  <div class="position-fixed top-0 end-0 p-3" style="z-index: 1200; min-width: 320px;">
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show shadow-lg" role="alert" style="background-color: #0f5132; color: #d1e7dd; border-radius: 0.5rem; font-weight: 600;">
+        <i class="fa-solid fa-circle-check me-2"></i>
+        {{ message }}
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<!-- 🔷 NAVBAR -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand text-success" href="{% url 'home' %}" style="font-weight:bold;">MENUIFY</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+               </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active text-success" aria-current="page" href="{% url 'reviews' %}">Reviews</a>
+                </li>
+                   {% if user.is_authenticated %}
+    <li class="nav-item">
+        <a class="nav-link text-success" href="{% url 'view-reservation' %}">
+            <i class="fa-solid fa-calendar-check me-1"></i> My Reservations
+        </a>
+    </li>
+{% endif %}
+
+
+                {% if user.is_authenticated %}
+                <form method="POST" action="{% url 'logout' %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm ms-2">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </button>
+                </form>
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-secondary btn-sm ms-2">
+                    <i class="fa-solid fa-right-to-bracket"></i> Login
+                </a>
+                {% endif %}
+            </ul>
+
+            <!-- 🔍 SEARCH -->
+            <form class="d-flex" method="get" action="{% url 'search-menu' %}">
+                <input class="form-control me-2" type="search" name="query" placeholder="Search menu items..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- 🔷 PAGE CONTENT -->
+{% block content %}
+{% endblock content %}
+
+<!-- 🔷 FOOTER -->
+<footer class="footer-base footer-parallax mt-5">
+    <div class="content">
+        <div class="container text-center">
+            <hr class="space s" />
+            <p class="fw-bold text-success">We don't care if we're doing haute cuisine.<br />We just do it right. Always.</p>
+            <hr class="space s" />
+
+            <!-- Social Icons -->
+            <div class="btn-group social-group btn-group-icons">
+                <a target="_blank" href="#"><i class="fa-brands fa-square-facebook fa-xl text-success mx-2"></i></a>
+                <a target="_blank" href="#"><i class="fa-brands fa-square-twitter fa-xl text-success mx-2"></i></a>
+                <a target="_blank" href="#"><i class="fa-brands fa-square-instagram fa-xl text-success mx-2"></i></a>
+                <a target="_blank" href="#"><i class="fa-brands fa-square-youtube fa-xl text-success mx-2"></i></a>
+            </div>
+
+            <hr class="space s" />
+            <p class="text-muted small mt-3">
+                © 2025 Menuify — info@menuify.com — +977 9815029771 — Gwarko-Imadol Rd, Imadol — Restaurant
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- 🔷 BOOTSTRAP JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Auto-dismiss alerts after 4 seconds -->
+<script>
+  window.setTimeout(() => {
+    document.querySelectorAll('.alert').forEach(alert => {
+      let bsAlert = new bootstrap.Alert(alert);
+      bsAlert.close();
+    });
+  }, 4000);
+</script>
+
+</body>
+</html>

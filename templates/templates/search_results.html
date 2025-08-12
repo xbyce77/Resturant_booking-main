@@ -1,0 +1,48 @@
+<!-- templates/menu/search_results.html -->
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+  <h2 class="mb-4 text-center">Search Results for "<strong>{{ query }}</strong>"</h2>
+
+  <div class="row">
+    {% for item in results %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow rounded-4">
+          <!-- Item Image -->
+          {% if item.images %}
+            <img src="{{ item.images.url }}" class="card-img-top rounded-top-4" alt="{{ item.item_name }}" loading="lazy">
+          {% else %}
+            <img src="{% static 'img/default.jpg' %}" class="card-img-top rounded-top-4" alt="No Image Available" loading="lazy">
+          {% endif %}
+
+          <div class="card-body">
+            <h5 class="card-title">{{ item.item_name }}</h5>
+            <p class="card-text mb-1"><strong>Price:</strong> ₹{{ item.item_price }}</p>
+            <p class="card-text text-muted mb-2">
+              <i class="bi bi-tags"></i> {{ item.category.type }}  <!-- Updated to category.type -->
+            </p>
+            <p class="card-text small text-secondary">
+              <strong>Ingredients:</strong> {{ item.ingredients|truncatewords:20 }}
+            </p>
+          </div>
+
+          <div class="card-footer bg-transparent border-0 text-center">
+            <a href="{% url 'menu-detail' item.id %}" class="btn btn-outline-primary btn-sm rounded-pill">
+              View Details
+            </a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12 text-center">
+        <p class="text-muted fs-5">No menu items match your search.</p>
+        <a href="{% url 'menu-list' %}" class="btn btn-primary mt-3">
+          Browse Full Menu
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

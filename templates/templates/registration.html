@@ -1,0 +1,15 @@
+{% extends 'main.html'%} 
+{% load static %}  
+{% block content %}
+<br>
+<br>
+<div class="container" style="color: black; max-width: 600px; background: rgba(215, 214, 214, 0.772);">
+        <h1>New User!!!</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Register" class="btn btn-primary">
+        </form>
+        <a href="{% url 'login' %}" class="btn btn-secondary" style="width:580 ;">Existing User!!</a>
+</div>>
+{% endblock%}f

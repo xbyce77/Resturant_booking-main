@@ -1,0 +1,138 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="py-5 text-center bg-light">
+    <div class="container">
+        <h1 class="display-2 fw-bold text-dark">Welcome to <span class="text-primary">MENUIFY</span></h1>
+        <p class="lead text-muted fs-4">Book tables, explore dishes, and experience the joy of fine dining — all in one place.</p>
+        <div class="mt-4">
+            <a href="{% url 'create-reservation' %}" class="btn btn-success btn-lg mx-2 px-4 py-2 fw-bold">
+                <i class="fas fa-calendar-plus"></i> Reserve Now
+            </a>
+            <a href="{% url 'view-reservation' %}" class="btn btn-primary btn-lg mx-2 px-4 py-3 fw-bold">
+                <i class="fas fa-table-list"></i> My Reservations
+            </a>
+            <a href="{% url 'search-menu' %}" class="btn btn-warning btn-lg mx-2 px-4 py-2 fw-bold text-dark">
+                <i class="fas fa-utensils"></i> Browse Menu
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Feature Highlights -->
+<section class="py-5 bg-white text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-chair fa-3x text-primary mb-3"></i>
+                <h4 class="fw-bold">Seamless Table Booking</h4>
+                <p class="text-muted">Reserve tables ahead and skip the waiting queues.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-hamburger fa-3x text-success mb-3"></i>
+                <h4 class="fw-bold">Delicious Menu</h4>
+                <p class="text-muted">From gourmet meals to quick bites, we serve it all.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-star fa-3x text-warning mb-3"></i>
+                <h4 class="fw-bold">Top-rated Experience</h4>
+                <p class="text-muted">Loved by foodies across the region.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery -->
+<section class="py-5 bg-dark">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Explore Our Ambience</h2>
+        <div class="row">
+            <div class="col-md-6 mb-6">
+                <img src="{% static 'img/ambience.avif' %}" class="img-fluid rounded shadow" alt="Gallery 1">
+            </div>
+            <div class="col-md-6 mb-6">
+                <img src="{% static 'img/menu.jpg' %}" class="img-fluid rounded shadow" alt="Gallery 2">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-5 bg-light text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-5"><i class="fas fa-star-half-alt text-warning me-2"></i>What Our Guests Say</h2>
+    <div class="row g-4">
+      
+      <!-- Review Card 1 -->
+      <div class="col-md-4">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-body">
+            <img src="https://i.pravatar.cc/60?img=1" class="rounded-circle mb-3" alt="Aarya">
+            <h5 class="card-title mb-1">Roshni</h5>
+            <div class="text-warning mb-2">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <p class="card-text fst-italic">
+              <i class="fas fa-quote-left me-2 text-muted"></i>
+              Easiest way to reserve a table. Loved the simplicity!
+              <i class="fas fa-quote-right ms-2 text-muted"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review Card 2 -->
+      <div class="col-md-4">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-body">
+            <img src="https://i.pravatar.cc/60?img=2" class="rounded-circle mb-3" alt="Rohit">
+            <h5 class="card-title mb-1">Rohit</h5>
+            <div class="text-warning mb-2">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="card-text fst-italic">
+              <i class="fas fa-quote-left me-2 text-muted"></i>
+              Amazing menu and fast booking. Great job, Menuify!
+              <i class="fas fa-quote-right ms-2 text-muted"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review Card 3 -->
+      <div class="col-md-4">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-body">
+            <img src="https://i.pravatar.cc/60?img=3" class="rounded-circle mb-3" alt="Simran">
+            <h5 class="card-title mb-1">Simran</h5>
+            <div class="text-warning mb-2">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="card-text fst-italic">
+              <i class="fas fa-quote-left me-2 text-muted"></i>
+              Perfect experience from reservation to dining.
+              <i class="fas fa-quote-right ms-2 text-muted"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

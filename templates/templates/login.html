@@ -1,0 +1,15 @@
+{% extends 'main.html'%} 
+{% load static %}  
+{% block content %}
+<br>
+<br>
+<div class="container" style="color: black; max-width: 400px; background: rgba(215, 214, 214, 0.772);">
+<h3>Welcome To Menuify... Please Login..</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Login" class="btn btn-primary">
+        </form>
+        <a href="{% url 'register' %}" class="btn btn-secondary" style="width:380 ;">register</a>
+</div>
+{%endblock%}

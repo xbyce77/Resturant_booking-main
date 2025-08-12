@@ -1,0 +1,33 @@
+<!-- templates/menu_detail.html -->
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="card shadow rounded-4">
+    <form method="POST" action="{% url 'add_to_cart' menu_item.id %}">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="quantity" class="form-label">Quantity:</label>
+    <input type="number" name="quantity" id="quantity" value="1" min="1" class="form-control w-25" required>
+  </div>
+   </form>
+  <form method="post" action="{% url 'add_to_cart' menu_item.id %}">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-success">Add to Cart</button>
+</form>
+
+
+
+    {% if menu_item.images %}
+      <img src="{{ menu_item.images.url }}" class="card-img-top rounded-top-4" alt="{{ menu_item.item_name }}">
+    {% endif %}
+    <div class="card-body">
+      <h3 class="card-title">{{ menu_item.item_name }}</h3>
+      <p class="text-muted"><strong>Category:</strong> {{ menu_item.category }}</p>
+      <p><strong>Price:</strong> ₹{{ menu_item.item_price }}</p>
+      <p><strong>Ingredients:</strong> {{ menu_item.ingredients }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
