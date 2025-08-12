@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="container my-5">
+  <h2>Add Item to Table: {{ reservation }}</h2>
+  
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add to Table</button>
+  </form>
+</div>
+
+{% endblock %}

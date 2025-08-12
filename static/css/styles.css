@@ -1,0 +1,156 @@
+/* Carousel image styling */
+.carousel-inner img {
+    max-width: 60%;
+    height: 700px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 20px #e63946;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+.carousel-inner img:hover {
+    transform: scale(1.02);
+}
+
+/* Body Background & Font */
+body {
+    background-color: #1e1e2f;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #f1faee;
+}
+
+/* Glowing Div Styling */
+div {
+    color: #f1faee;
+    font-weight: bold;
+}
+
+/* Center form vertically and horizontally */
+.center-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Elegant paragraph box */
+.para {
+    background: linear-gradient(45deg, #e6394670, #a8dadc9c);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #e63946;
+    color: #1e1e2f;
+    margin: 0;
+}
+
+/* Stylish card columns */
+.col {
+    background: linear-gradient(45deg, #2c2e3a, #444654);
+    color: #f1faee;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(230, 57, 70, 0.3);
+    margin: 0;
+    border-bottom: 1px solid #e63946;
+}
+
+/* Social button padding */
+.btn-group div {
+    padding: 10px;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: rgba(30, 30, 47, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 10px #e63946;
+}
+
+/* Change navbar background on scroll */
+.navbar.scrolled {
+    background-color: rgba(30, 30, 47, 0.98);
+}
+
+/* Footer Styling */
+footer {
+    color: #f1faee;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    background: rgba(30, 30, 47, 0.95);
+    font-size: 0.9rem;
+    box-shadow: 0 -1px 10px #e63946;
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="datetime-local"],
+select,
+textarea {
+    background-color: #2a2d3e;
+    border: 1px solid #a8dadc;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-radius: 5px;
+    width: 70%;
+    font-size: 1rem;
+    color: #f1faee;
+    box-shadow: 0 0 5px #a8dadc;
+    transition: box-shadow 0.3s ease;
+}
+
+/* Input focus effect */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px #e63946;
+    background-color: #1e1e2f;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-success,
+.btn-danger,
+.btn-info,
+.btn-secondary {
+    border-radius: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    border: 2px solid #e63946;
+    color: #e63946;
+    box-shadow: 0 0 10px #e63946;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-success:hover,
+.btn-danger:hover,
+.btn-info:hover,
+.btn-secondary:hover {
+    background-color: #e63946;
+    color: #f1faee;
+    border-color: #b51730;
+    box-shadow: 0 0 15px #e63946;
+}
+
+/* Responsive Carousel */
+@media (max-width: 768px) {
+    .carousel-inner img {
+        max-width: 90%;
+        height: auto;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+    }
+}

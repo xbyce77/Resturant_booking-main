@@ -1,0 +1,107 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="container mt-4" style="max-width: 700px; background: rgba(215, 214, 214, 0.9); padding: 25px; border-radius: 10px;">
+    <h2 class="mb-4 text-center">Reserve Your Table</h2>
+
+    <form method="POST">
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger">
+        {% for error in form.non_field_errors %}
+          <p>{{ error }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% for field in form %}
+      <div class="mb-3">
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.errors %}
+          <div class="text-danger small">
+            {% for error in field.errors %}
+              <p>{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <!-- Inline orders -->
+    <h4 class="mt-4 mb-3">Add Table Orders</h4>
+    {{ order_formset.management_form }}
+    <!-- ... rest unchanged ... -->
+
+
+        <div id="order-formset">
+            {% for form in order_formset %}
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <div class="row mb-2">
+                            <div class="col-md-8">
+                                <label class="form-label">{{ form.menu_item.label }}</label>
+                                {{ form.menu_item }}
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">{{ form.quantity.label }}</label>
+                                {{ form.quantity }}
+                            </div>
+                        </div>
+                        {% if form.DELETE %}
+                        <div class="form-check">
+                            {{ form.DELETE }}
+                            <label class="form-check-label text-danger">Remove this item</label>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center">
+             <button type="submit" name="action" value="check_availability" class="btn btn-info px-4 me-2">Check Availability</button>
+            <button type="submit" class="btn btn-success px-5 mt-3">Reserve</button>
+        </div>
+    </form>
+
+    <div class="d-flex justify-content-between mt-4">
+        <a href="{% url 'view-reservation' %}" class="btn btn-outline-primary">View Reservations</a>
+        <a href="{% url 'logout' %}" class="btn btn-outline-danger">Logout</a>
+    </div>
+</div>
+
+<!-- Opening Hours -->
+<div class="container mt-5">
+    <h2>Hours</h2>
+    <p>Our open schedules</p>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Reservation Time</th>
+                <td>8am - 11pm</td>
+                <td>8am - 11pm</td>
+                <td>8am - 11pm</td>
+                <td>8am - 11pm</td>
+                <td>8am - 11pm</td>
+                <td>Closed</td>
+                <td>8am - 11pm</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
